@@ -152,9 +152,89 @@ string1 = string1.padStart(10, "*");
 document.getElementById("example19").innerText = string1;
 
 // Classes
-import { Animal } from "./animal.js";
+import { Animal, Cat } from "./animal.js";
 let cat = new Animal("Cat", 4);
 cat.type = "Tiger";
 document.getElementById("example21").innerText = `${cat.type} ${
   cat.legs
 } ${cat.makeNoise("Meow")} ${Animal.showPrice()} ${cat.metaData}`;
+
+// Override
+let newCat = new Cat("Siamese", 3);
+document.getElementById("example22").innerText = `${newCat.type} ${
+  newCat.legs
+} ${newCat.makeNoise()} ${newCat.metaData}`;
+
+// Trailing commas
+function addStuff(param) {
+  const example = {
+    name: "Rory",
+  };
+}
+
+// Async and Await
+const apiUrl = "https://catfact.ninja/fact";
+
+function callAPI() {
+  fetch(apiUrl)
+    .then((r) => r.json())
+    .then((json) => {
+      document.getElementById("example23").innerText = json.fact;
+    })
+    .catch((ex) => {
+      document.getElementById(
+        "example23"
+      ).innerText = `Error in Call to ${apiUrl}`;
+    });
+}
+
+callAPI();
+
+// Now with less code
+async function lessCodeCallToAPI() {
+  const response = await fetch(apiUrl); // same endpoint
+  const json = await response.json();
+  document.getElementById("example24").innerText = json.fact;
+}
+
+lessCodeCallToAPI();
+
+// Promise
+function resolveAfter3Seconds() {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("Resolved"); // wait for three seconds then return Resolved
+    }, 3000);
+  });
+}
+
+resolveAfter3Seconds().then((data) => {
+  document.getElementById("example25").innerText = data;
+});
+
+async function getAsyncData() {
+  const result = await resolveAfter3Seconds();
+  document.getElementById("example26").innerText = result;
+}
+
+getAsyncData();
+
+// Sets
+const exampleSet = new Set([
+  1, 1, 1, 2, 2, 3, 4, 5, 5, 5, 6, 7, 8, 8, 8, 8, 8, 9, 10,
+]);
+
+exampleSet.add(11);
+exampleSet.add(12);
+exampleSet.add(1);
+exampleSet.delete(5);
+
+document.getElementById("example27").innerText = `Sets: size=${
+  exampleSet.size
+} ${exampleSet.has(1)} ${exampleSet.has(5)} `;
+
+exampleSet.clear();
+
+document.getElementById(
+  "example28"
+).innerText = `Sets: size=${exampleSet.size}`;

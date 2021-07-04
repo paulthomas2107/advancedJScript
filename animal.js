@@ -15,3 +15,14 @@ export class Animal {
     return `Type: ${this.type} Legs: ${this.legs}`;
   }
 }
+
+export class Cat extends Animal {
+  constructor(type, legs, tail) {
+    super(type, legs);
+    this.tail = tail;
+  }
+
+  makeNoise(sound = "Meow !!") {
+    return sound;
+  }
+}
