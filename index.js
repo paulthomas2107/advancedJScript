@@ -145,3 +145,16 @@ document.getElementById("example18").innerText = numArray5.includes(4); // true
 import { codes } from "./extra.js";
 codes.push(2021);
 document.getElementById("example19").innerText = codes;
+
+// padStart and padEnd
+let string1 = "Paulie";
+string1 = string1.padStart(10, "*");
+document.getElementById("example19").innerText = string1;
+
+// Classes
+import { Animal } from "./animal.js";
+let cat = new Animal("Cat", 4);
+cat.type = "Tiger";
+document.getElementById("example21").innerText = `${cat.type} ${
+  cat.legs
+} ${cat.makeNoise("Meow")} ${Animal.showPrice()} ${cat.metaData}`;
